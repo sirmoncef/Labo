@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Get Analysis{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="get">
+        <div class="titre">Get Analysis</div>
+        <div class="container">
+            <div class="form-container">
+
+                <!-- Form for entering the patient code -->
+                <form method="get">
+                    <div class="form-group">
+                        <label for="patientCode">Patient Code:</label>
+                        <input type="text" id="patientCode" name="patientCode" placeholder="Enter your code" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+                <!-- Display the result if it exists -->
+                {% if result %}
+                    <div class="result">
+                        <h2>Result:</h2>
+                        <p>{{ result }}</p>
+                    </div>
+                {% endif %}
+
+                <!-- Display an error message if the code is invalid -->
+                {% if error %}
+                    <div class="error">
+                        <p>{{ error }}</p>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="rendez">
+    <div class="titre">Appointment</div>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="box1">
+                <div>
+                    <label for="name">First Name</label>
+                    <input type="text" id="name" name="name" placeholder="First Name">
+                    <label for="tel">Phone Number</label>
+                    <input type="tel" name="tel" id="tel" placeholder="0- -- -- -- --">
+                </div>
+                <div>
+                    <label for="name2">Last Name</label>
+                    <input type="text" id="name2" name="name2" placeholder="Last Name">
+                    <label for="em">Email</label>
+                    <input type="email" name="em" id="em" placeholder="">
+                </div>
+            </div>
+            <label for="q">First time visit ?</label>
+            <div id="q">
+                <input type="radio" name="q" id="y" value="y">
+                <label for="y" style="display: inline;margin: 0 20px 0 5px;">Yes</label>
+                <input type="radio" name="q" id="n" value="n">
+                <label for="n" style="display: inline;margin: 0 20px 0 5px;">No</label>
+            </div>
+            <div class="box1">
+                <div>
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date">
+                </div>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+        
+        {% if message %}
+            <p>{{ message }}</p>
+            {% if ticket_number %}
+                <p>Your ticket number is: {{ ticket_number }}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

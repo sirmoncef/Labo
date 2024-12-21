@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}services{% endblock %}
+{% load static %}
+
+{% block content %}
+
+    <div class="our">
+        <div class="titre">Our Services</div>
+        <div class="container">
+            <table border="1">
+                <tr>
+                    <td>Service</td>
+                    <td>Type</td>
+                    <td>Price</td>
+                </tr>
+                {% for service in services %}
+                <tr>
+                    <td>{{service.exam}}</td>
+                    <td>{{service.tube}}</td>
+                    <td>{{service.price}}.00 dz </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+    </div>
+
+   {% endblock %}
