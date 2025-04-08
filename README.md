@@ -71,6 +71,14 @@ This is a web-based laboratory platform built using Django for the backend and H
    The server will be running at `http://127.0.0.1:8000`.
 
 
+##  Diagram
+
+Here is simple use case diagram for the laboratory platform:
+
+![Diagram](diagram/diagram.png)
+
+
+
 ## Contributors
 - @scottt242: Contributed to the frontend development 
 
