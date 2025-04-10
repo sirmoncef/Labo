@@ -12,6 +12,7 @@ This is a web-based laboratory platform built using Django for the backend and H
 - **User Authentication:**:  Users can sign up and log in  with secure authentication
 
 
+## Video
 
 **Click in this image bellow to watch the demo video**
 
