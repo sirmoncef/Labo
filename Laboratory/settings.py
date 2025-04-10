@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a6kcg#2fmr^cfk9@+9&@*=b00^^3dy1p6mi=xo20)hf&6ggw&b'
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -64,9 +64,10 @@ WSGI_APPLICATION = 'Laboratory.wsgi.application'
 
 
 DATABASES = {
-    "default": dj_database_url.parse(
-        "postgresql://hello:a4rFYUD48M8fo4edY6ihR2mfNMjF9FDU@dpg-ct72r9jtq21c73big9gg-a.oregon-postgres.render.com/hello_3p00"
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
@@ -109,3 +110,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/' 
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

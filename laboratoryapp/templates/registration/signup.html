@@ -1,29 +1,28 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% block title %}Sign Up - Noor Clinic{% endblock %}
 {% load static %}
 
 {% block content %}
-<div class="form-container2">
-    <h2>Sign Up</h2>
-
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
-
-
-    <form action="" method="post" id="form2">
-        {% csrf_token %}
-        <input type="text" name="first_name" placeholder="first name" required>
-        <input type="text" name="last_name" placeholder="last name " required>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-        <input type="submit" value="Sign Up">
-    </form>
+<div class="auth-page">
+    <div class="form-container">
+        <form action="{% url 'signup' %}" method="post" class="form-box">
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+            {% if message %}
+                <p class="form-message">{{ message }}</p>
+            {% endif %}
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+            <p class="form-footer">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
 </div>
-
-
-
-
 {% endblock %}
+
+
+

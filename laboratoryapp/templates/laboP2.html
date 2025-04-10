@@ -1,51 +1,154 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
-{% load static %}
+{% block title %}Book Appointment{% endblock %}
 
 {% block content %}
-<div class="rendez">
-    <div class="titre">Appointment</div>
-    <div class="container">
-        <form method="post">
+<div class="appointment-section">
+    <div class="appointment-header">
+        <h2>Book an Appointment</h2>
+        <p>Schedule your visit with our specialists</p>
+    </div>
+    
+    <div class="appointment-container">
+        {% if message and not ticket_number %}
+        <div class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>{{ message }}</span>
+        </div>
+        {% endif %}
+        
+        <form method="post" class="appointment-form">
             {% csrf_token %}
             
-            <div class="box1">
-                <div>
-                    <label for="name">First Name</label>
-                    <input type="text" id="name" name="name" placeholder="First Name">
-                    <label for="tel">Phone Number</label>
-                    <input type="tel" name="tel" id="tel" placeholder="0- -- -- -- --">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="floating-label">
+                        <input type="text" id="firstName" name="firstName" 
+                               value="{{ request.POST.firstName|default:'' }}" required>
+                        <label for="firstName">First Name</label>
+                        <div class="underline"></div>
+                    </div>
                 </div>
-                <div>
-                    <label for="name2">Last Name</label>
-                    <input type="text" id="name2" name="name2" placeholder="Last Name">
-                    <label for="em">Email</label>
-                    <input type="email" name="em" id="em" placeholder="">
-                </div>
-            </div>
-            <label for="q">First time visit ?</label>
-            <div id="q">
-                <input type="radio" name="q" id="y" value="y">
-                <label for="y" style="display: inline;margin: 0 20px 0 5px;">Yes</label>
-                <input type="radio" name="q" id="n" value="n">
-                <label for="n" style="display: inline;margin: 0 20px 0 5px;">No</label>
-            </div>
-            <div class="box1">
-                <div>
-                    <label for="date">Date</label>
-                    <input type="date" name="date" id="date">
+                
+                <div class="form-group">
+                    <div class="floating-label">
+                        <input type="text" id="lastName" name="lastName"
+                               value="{{ request.POST.lastName|default:'' }}" required>
+                        <label for="lastName">Last Name</label>
+                        <div class="underline"></div>
+                    </div>
                 </div>
             </div>
             
-            <input type="submit" value="Submit">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="floating-label">
+                        <input type="tel" id="phone" name="phone" 
+                               pattern="[0-9]{10}" 
+                               value="{{ request.POST.phone|default:'' }}" required>
+                        <label for="phone">Phone Number (10 digits)</label>
+                        <div class="underline"></div>
+                        <span class="error-hint">Must be 10 digits</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="floating-label">
+                        <input type="email" id="email" name="email"
+                               value="{{ request.POST.email|default:'' }}" required>
+                        <label for="email">Email Address</label>
+                        <div class="underline"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group radio-group">
+                <label class="section-label">First time visit?</label>
+                <div class="radio-options">
+                    <label class="radio-label">
+                        <input type="radio" name="firstVisit" value="yes" 
+                               {% if request.POST.firstVisit == 'yes' %}checked{% endif %} required>
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">Yes</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="firstVisit" value="no"
+                               {% if request.POST.firstVisit == 'no' %}checked{% endif %}>
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">No</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="floating-label">
+                        <input type="date" id="appointmentDate" name="appointmentDate"
+                               value="{{ request.POST.appointmentDate|default:'' }}" required>
+                        <label for="appointmentDate">Appointment Date</label>
+                        <div class="underline"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="floating-label">
+                        <input type="time" id="appointmentTime" name="appointmentTime"
+                               value="{{ request.POST.appointmentTime|default:'' }}" required>
+                        <label for="appointmentTime">Preferred Time</label>
+                        <div class="underline"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="floating-label textarea-group">
+                    <textarea id="comments" name="comments" rows="4">{{ request.POST.comments|default:'' }}</textarea>
+                    <label for="comments">Additional Comments</label>
+                    <div class="underline"></div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                Book Appointment
+                <i class="fas fa-calendar-check"></i>
+            </button>
         </form>
         
-        {% if message %}
-            <p>{{ message }}</p>
-            {% if ticket_number %}
-                <p>Your ticket number is: {{ ticket_number }}</p>
-            {% endif %}
+        {% if  ticket_number %}
+        <div class="confirmation-message">
+            <div class="message-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="message-content">
+                <h3>{{ message }}</h3>
+                <p>Your ticket number: <span class="ticket-number">{{ ticket_number }}</span></p>
+                <div class="appointment-details">
+                    <p><strong>Name:</strong> {{ appointment.first_name }}</p>
+                    <p><strong>Date:</strong> {{ appointment.date }}</p>
+                    <p><strong>Time:</strong> {{ appointment.time }}</p>
+                    <p><strong>Phone:</strong> {{ appointment.phone }}</p>
+                </div>
+            </div>
+        </div>
         {% endif %}
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('appointmentDate').min = today;
+    
+    // Time validation (8am-5pm)
+    const timeInput = document.getElementById('appointmentTime');
+    timeInput.addEventListener('change', function() {
+        const hours = parseInt(this.value.split(':')[0]);
+        if (hours < 8 || hours >= 17) {
+            this.setCustomValidity('We are only open from 8:00 to 17:00');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+});
+</script>
 {% endblock %}

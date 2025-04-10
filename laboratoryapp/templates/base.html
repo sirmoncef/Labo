@@ -6,77 +6,184 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link href="{% static 'css/labo.css' %}" rel="stylesheet">
+    <link rel="stylesheet"  href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c36c1906c0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <title>Laboratoire</title>
 </head>
 
 <body>
+    <div class="filter active"></div>
     <header id="Home">
         <div class="container">
             <div class="logo">
-                <h1>Laboratoire</h1>
-                <img src="{% static 'images/laboratory_12485936.png' %}" alt="">
+                <i class="fa-solid fa-flask-vial"></i>
             </div>
             <ul class="bar">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'home' %}#About">About Us</a></li>
-                <li><a href="{% url 'home' %}#Service">Service</a></li>
-                <li><a href="{% url 'home' %}#Contact">Contact Us</a></li>
-                {% if not request.user.is_authenticated %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="/#Home">Home</a></li>
+                <li><a href="/#About">About Us</a></li>
+                <li><a href="/#Service">Service</a></li>
+                <li><a href="/#Contact">Contact Us</a></li>
+                {% if user.is_authenticated %}
+                <li class="sign"><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                <li><a href="{% url 'logout' %}">Log Out</a></li> 
-                {% endif %}
-
-
-
+                <li><a href="{% url 'login' %}" class="nav-button">Login</a></li>
+                <li><a href="{% url 'signup' %}" class="nav-button">Sign Up</a></li>
+               {% endif %}
             </ul>
         </div>
     </header>
+
+   
     {% block content %}
     {% endblock %}
     <footer>
         <div class="container">
             <div class="info">
                 <div class="box">
-                    <i class="fa-solid fa-flask-vial"></i>
-                    <h1>Laboratory</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo doloremque commodi autem incidunt sapiente officia alias voluptatibus ullam pariatur veniam! At ratione quo neque autem accusantium cumque impedit alias dolore.</p>
+                    
+                    <h1 style="margin-left: -15px;">Noor Clinic Laboratory </h1>
+                    <p>Providing accurate diagnostic services to the Sidi Bel Abbès community since 2010. We are committed to excellence in laboratory medicine and patient care.</p>
                 </div>
                 <div class="box">
                     <div class="row1">
                         <i class="fas fa-map-marker-alt fa-fw"></i>
-                        <p>
-                            Egypt, Giza, Inside The Sphinx, Room Number 220
-                        </p>
+                        <p>123 Medical Street, Sidi Bel Abbès, Algeria</p>
                     </div>
                     <div class="row2">
                         <i class="far fa-clock fa-fw"></i>
-                        <p>Business Hours: From 10:00 To 18:00</p>
+                        <p>Business Hours: Sunday-Thursday, 8:00 AM to 5:00 PM</p>
                     </div>
                     <div class="row3">
                         <i class="fas fa-phone-volume fa-fw"></i>
                         <span>
-                            <p>+20123456789</p>
-                            <p>+20198765432</p>
+                            <p>+213 668 08 46 05</p>
+                            <p>+213 48 12 34 56</p>
                         </span>
                     </div>
                 </div>
                 <div class="box">
-                    <img src="{% static 'images/landing.jpg' %}" alt="">
+                    <img src="/static/images/footer-pic.png" alt="Laboratory Entrance" style="border-radius: 15px;">
                 </div>
             </div>
             <div class="bye">
-                <p>Copyright &copy; labit all rights reserved.</p>
+                <p>Copyright &copy; 2023 Noor Clinic Laboratory. All rights reserved.</p>
                 <a href="#Home">Home</a>
             </div>
         </div>
     </footer>
+
+     <!-- Swiper JS -->
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+ <!-- Initialize Swiper -->
+ <script>
+   var swiper = new Swiper(".mySwiper", {
+     direction: "vertical",
+     pagination: {
+       el: ".swiper-pagination",
+       clickable: true,
+     },
+   });
+ </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+
+    //------------------------------------------------------------------
+       let btn = document.querySelectorAll(".service .box button")
+btn[0].onclick = () => {
+    window.location.href = "./laboP2.html"
+}
+btn[1].onclick = () => {
+    window.location.href = "./laboP3.html"
+}
+btn[2].onclick = () => {
+        window.location.href = "./laboP4.html"
+    }
+    //---------------------------------------------------------------------
+    // Scene
+    const scene = new THREE.Scene();
+// const background=new THREE.CubeTextureLoader().setPath("./cubemap/").load([
+//   'px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'
+// ])
+const textureLoader=new THREE.TextureLoader();
+ const texture=textureLoader.load("{% static 'images/20231212_BTS_ModernLaboratory_SupportImage-1080x600.png' %}")
+ scene.background=texture
+
+  const light = new THREE.AmbientLight("white",.5)
+        scene.add(light);
+    const pointLight=new THREE.PointLight("white",4)
+    pointLight.position.set(-2,2,2)
+    scene.add(pointLight)
+    // Camera (PerspectiveCamera: field of view, aspect ratio, near, far)
+    const container = document.getElementsByClassName('landing')[0];
+    const camera = new THREE.PerspectiveCamera(100, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 1, 5); // Adjust as necessary
+camera.lookAt(0,-2,0); // Focus the camera on the scene's center
+
+    scene.add(camera);
+
+
+//  const gltfLoader=new THREE.GLTFLoader()
+//  gltfLoader.load("./gltf/scene.gltf",(model)=>{
+// // Adjust Model Position
+// const modelScene = model.scene;
+// modelScene.scale.setScalar(0.03);
+// modelScene.position.set(-5, -2, 0); // Move the model to the left
+// modelScene.rotation.y = -3 * Math.PI / 2;
+// scene.add(modelScene);
+
+// // Rotate the Model Continuously
+// function rotateModel() {
+//   requestAnimationFrame(rotateModel);
+
+//   // Apply Rotation
+//   modelScene.rotation.y += 0.01;
+
+//   // Render the Scene
+//   renderer.render(scene, camera);
+// }
+// rotateModel();
+
+//  }
+// )
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+ // OrbitControls
+ const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    // Animation Loop
+    function animate() {
+        requestAnimationFrame(animate);
+
+
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // Resize Handling
+    window.addEventListener('resize', () => {
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+    });
+</script>
     
     <script src="{% static 'js/labo.js' %}"></script>
     

@@ -4,69 +4,97 @@
 
 {% block content %}
 <div class="landing">
-    <img src="{% static 'images/school(1).png' %}" alt="">
-    <img src="{% static 'images/20231212_BTS_ModernLaboratory_SupportImage-1080x600.png' %}" alt="">
-    <img src="{% static 'images/20231212_BTS_ModernLaboratory_SupportImage-1080x600.png' %}" alt="">
-    <div class="container">
-        <div class="indicators">
-            <div class="slide active"></div>
-            <div class="slide"></div>
-            <div class="slide"></div>
+    <!-- <img src="./20231212_BTS_ModernLaboratory_SupportImage-1080x600.png" alt="" srcset=""> -->
         </div>
-        <div class="cont active">
-            <div class="image">
-                <img src="{% static 'images/landing.jpg' %}" alt="">
+      <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="cont active">
+                <div class="image">
+                    <img src="{% static 'images/landing2.jpg' %}" alt="">
+                </div>
+    
+                <div class="welcome">
+                    <h1>Advances of science make easier our daily life!</h1>
+                </div>
             </div>
-
-            <div class="welcome">
-                <h1>Advances of science make easier our daily life!</h1>
+          </div>
+          <div class="swiper-slide">
+            <div class="cont">
+                <div class="image">
+                    <img src="{% static 'images/nx.png' %}" alt="">
+                </div>
+    
+                <div class="welcome">
+                    <h1>Your health is our responsibility </h1>
+                </div>
             </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="cont">
+                <div class="image">
+                    <img src="{% static 'images/cover-pic.jpg' %}" alt="">
+                </div>
+    
+                <div class="welcome">
+                    <h1>Welcome to our laboratory</h1>
+                </div>
+            </div>
+          </div>
+    
         </div>
-        <div class="cont">
-            <div class="image">
-                <img src="{% static 'images/landing2.jpg' %}" alt="">
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="about-section" id="About">
+        <div class="about-container">
+            <div class="about-header">
+                <h2 class="about-title">About Us</h2>
+                <div class="title-decoration"></div>
             </div>
-
-            <div class="welcome">
-                <h1>Your health is our responsibility</h1>
-            </div>
-        </div>
-        <div class="cont">
-            <div class="image">
-                <img src="{% static 'images/landing3.jpg' %}" alt="">
-            </div>
-
-            <div class="welcome">
-                <h1>Welcome to our laboratory</h1>
+            
+            <div class="about-content">
+                <div class="about-card who-we-are">
+                    <div class="card-header">
+                        <h3>Who We Are</h3>
+                        <div class="icon-circle">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Noor Clinic Laboratory is a state-of-the-art medical facility located in Sidi Bel Abbès, Algeria. We specialize in providing accurate and timely diagnostic services to help healthcare providers deliver the best possible care to their patients.</p>
+                        <div class="card-image">
+                            <img src="{% static 'images/index-1_img01.jpg' %}" alt="Laboratory equipment">
+                        </div>
+                        <p>Our team of experienced professionals is dedicated to maintaining the highest standards of quality and precision in all our tests and analyses.</p>
+                    </div>
+                </div>
+                
+                <div class="about-card our-mission">
+                    <div class="card-header">
+                        <h3>Our Mission</h3>
+                        <div class="icon-circle">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mission-point">
+                            <h4>Advanced Diagnostic Services</h4>
+                            <p>We utilize cutting-edge technology to deliver comprehensive laboratory testing, including hematology, biochemistry, microbiology, and molecular diagnostics.</p>
+                        </div>
+                        <div class="mission-point">
+                            <h4>Patient-Centered Care</h4>
+                            <p>We prioritize patient comfort and convenience with quick turnaround times and easy-to-understand results.</p>
+                        </div>
+                        <div class="mission-point">
+                            <h4>Community Health</h4>
+                            <p>We actively participate in community health initiatives and work closely with local healthcare providers to improve public health outcomes.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="about" id="About">
-    <div class="title">
-        About-US
-    </div>
-    <div class="container">
-        <div class="cont">
-            <div class="box">
-                <h1>A Few Words About Us</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo corrupti iure assumenda reprehenderit quae facilis dolore autem id quas? Quidem maiores veritatis facere nemo rem numquam perferendis sapiente assumenda nisi?Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Doloribus animi, esse corrupti hic iusto obcaecati nam quos ad distinctio culpa ex. Consequatur, culpa doloremque! Excepturi asperiores necessitatibus enim ducimus consequatur?Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Harum quasi ratione, eos velit, numquam eius dolor animi tenetur, sunt in fugit magni laboriosam accusantium commodi atque. Rem aliquid iusto nostrum.</p>
-                <img src="{% static 'images/index-1_img01.jpg' %}" alt="">
-            </div>
-            <div class="box">
-                <h1>What We Do</h1>
-                <h3>Donec accumsan malesua</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ea culpa enim dicta. Unde quia vel optio? Id tempore et nobis odit animi soluta dolore aliquam, sed commodi. Illum, praesentium.</p>
-                <h3>Donec accumsan malesua</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt iste provident, nihil unde delectus eligendi modi quos. Ipsa, repudiandae! Distinctio repudiandae dolorem voluptatem deleniti a! A accusantium eius ex omnis.</p>
-                <h3>Donec accumsan malesua</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae iste culpa eveniet vel harum modi voluptatum animi quaerat sit quod expedita, necessitatibus ex velit aliquid eos quisquam, officia quasi exercitationem!</p>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="spikes"></div>
 <div class="service" id="Service">
     <img src="{% static 'images/vecteezy_white-rectangle-png_21625116.png' %}" alt="">
@@ -76,55 +104,111 @@
     <div class="container">
         <div class="box">
             <div class="image">
-                <img src="{% static 'images/rendez-vous-1.jpg' %}" alt="">
+                <img src="{% static 'images/appointement.png' %}" alt="">
             </div>
             <div class="text">
-                <h2>Appointment</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, est fuga. Nostrum aspernatur, saepe ducimus commodi vel enim eveniet alias perspiciatis est possimus illum tenetur dolores eius maiores harum et.</p>
+                <h2>Online Appointments</h2>
+                <p>Book your lab tests online—quick and easy , No waiting in line. Pick the best time for your visit.</p>
             </div>
            <a href="{% url 'appointment' %}"> <button>More</button></a>
         </div>
         <div class="box">
             <div class="image">
-                <img src="{% static 'images/service.jpg' %}" alt="">
+                <img src="{% static 'images/tests.png' %}" alt="">
             </div>
             <div class="text">
-                <h2>Our Services</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, est fuga. Nostrum aspernatur, saepe ducimus commodi vel enim eveniet alias perspiciatis est possimus illum tenetur dolores eius maiores harum et.</p>
+                <h2>Comprehensive Testing</h2>
+                <p>We offer a wide range of diagnostic services including blood tests, urine analysis, hormonal tests, and specialized genetic testing.</p>
             </div>
             <a href="{% url 'services' %}"><button>More</button></a>
         </div>
         <div class="box">
             <div class="image">
-                <img src="{% static 'images/data-analyse.jpg' %}" alt="">
+                <img src="{% static 'images/results.png' %}" alt="">
             </div>
             <div class="text">
-                <h2>Get Analysis</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, est fuga. Nostrum aspernatur, saepe ducimus commodi vel enim eveniet alias perspiciatis est possimus illum tenetur dolores eius maiores harum et.</p>
+                <h2>Results</h2>
+                <p>Receive your test results securely through our online portal, with detailed explanations and recommendations from our medical team.</p>
             </div>
             <a href="{% url 'get_analysis' %}"><button>More</button></a>
         </div>
     </div>
     <div class="wave"></div>
 </div>
-<div class="contact" id="Contact">
-    <div class="title">Contact Us</div>
-    <div class="content">
-        <div class="col">
-            <form action="">
-                <input type="text" placeholder="Your name">
-                <input type="email" placeholder="Your email">
-                <input type="tel" placeholder="Your phone">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Write your comment"></textarea>
-                <input type="button" value="send message">
-            </form>
+<div class="contact-section" id="Contact"></div>
+    <div class="contact-container">
+        <div class="contact-header">
+            <h2 class="contact-title">Contact Us</h2>
+            <div class="title-decoration"></div>
+            <p class="contact-subtitle">Get in touch with our team for any inquiries or appointments</p>
         </div>
-        <div class="col">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.83543450974!2d144.95565131564885!3d-37.81732797975192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f4e80a47%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1600112800000!5m2!1sen!2sus"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            <img src="{% static 'images/scientists-working-concept.png' %}" alt="">
+        
+        <!-- Message Display -->
+        {% if messages %}
+        <div class="contact-messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="contact-content">
+            <div class="contact-form-col">
+                <form class="contact-form" method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder=" " required value="{{ request.POST.name }}">
+                        <label>Your name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder=" " required value="{{ request.POST.email }}">
+                        <label>Your email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder=" " required value="{{ request.POST.phone }}">
+                        <label>Your phone</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder=" " rows="5" required>{{ request.POST.message }}</textarea>
+                        <label>Your message</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="contact-info-col">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d65472.53057186397!2d-0.6725903523941827!3d35.20539747238767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7f0030b5f78f73%3A0x24600b519acfdc29!2sSidi%20Bel%20Abb%C3%A8s!5e1!3m2!1sen!2sdz!4v1744111533437!5m2!1sen!2sdz" 
+                            allowfullscreen="" loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="contact-image">
+                    <img src="{% static 'images/scientists-working-concept.png' %}" alt="Medical professionals working">
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sidi Bel Abbès, Algeria</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+213 XXX XX XX XX</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@noorclinic.dz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -3,38 +3,58 @@
 {% load static %}
 
 {% block content %}
-    <div class="get">
-        <div class="titre">Get Analysis</div>
-        <div class="container">
-            <div class="form-container">
+<div class="analysis-section">
+    <div class="analysis-header">
+        <h2 class="analysis-title">Get Your Analysis Results</h2>
+        <div class="title-decoration"></div>
+        <p class="analysis-subtitle">Enter your patient code to retrieve your test results</p>
+    </div>
+    
+    <div class="analysis-container">
+        <div class="analysis-card">
+            <!-- Form for entering the patient code -->
+            <form class="analysis-form" method="get">
+                <div class="form-group floating-input">
+                    <input type="text" id="patientCode" name="patientCode" required>
+                    <label for="patientCode">Patient Code</label>
+                    <div class="underline"></div>
+                    <i class="fas fa-user-circle input-icon"></i>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    Retrieve Results
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
 
-                <!-- Form for entering the patient code -->
-                <form method="get">
-                    <div class="form-group">
-                        <label for="patientCode">Patient Code:</label>
-                        <input type="text" id="patientCode" name="patientCode" placeholder="Enter your code" required>
+            <!-- Display the result if it exists -->
+            {% if result %}
+                <div class="result-card success">
+                    <div class="result-icon">
+                        <i class="fas fa-file-medical-alt"></i>
                     </div>
-                    <div class="form-group">
-                        <button type="submit">Submit</button>
+                    <div class="result-content">
+                        <h3>Your Test Results</h3>
+                        <div class="result-data">
+                            <p>Image URL: <a href="{{ result }}" target="_blank">{{ result }}</a></p>
+                        </div>
                     </div>
-                </form>
+                </div>
+            {% endif %}
 
-                <!-- Display the result if it exists -->
-                {% if result %}
-                    <div class="result">
-                        <h2>Result:</h2>
-                        <p>{{ result }}</p>
+            <!-- Display an error message if the code is invalid -->
+            {% if error %}
+                <div class="result-card error">
+                    <div class="result-icon">
+                        <i class="fas fa-exclamation-circle"></i>
                     </div>
-                {% endif %}
-
-                <!-- Display an error message if the code is invalid -->
-                {% if error %}
-                    <div class="error">
+                    <div class="result-content">
+                        <h3>Error Retrieving Results</h3>
                         <p>{{ error }}</p>
                     </div>
-                {% endif %}
-
-            </div>
+                </div>
+            {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}

@@ -4,26 +4,35 @@
 
 {% block content %}
 
-    <div class="our">
-        <div class="titre">Our Services</div>
-        <div class="container">
-            <table border="1">
-                <tr>
-                    <td>Service</td>
-                    <td>Type</td>
-                    <td>Price</td>
-                </tr>
-                {% for service in services %}
-                <tr>
-                    <td>{{service.exam}}</td>
-                    <td>{{service.tube}}</td>
-                    <td>{{service.price}}.00 dz </td>
-                </tr>
-                {% endfor %}
+<div class="services-section">
+    <div class="services-header">
+        <h2 class="services-title">Our Services</h2>
+        <div class="title-decoration"></div>
+        <p class="services-subtitle">Comprehensive diagnostic services at competitive prices</p>
+    </div>
+    
+    <div class="services-container">
+        <div class="services-table-container">
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td data-label="Service">{{service.exam}}</td>
+                        <td data-label="Type">{{service.tube}}</td>
+                        <td data-label="Price">{{service.price}}.00 DZD</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
-
-
     </div>
+</div>
 
    {% endblock %}
