@@ -11,6 +11,13 @@ This is a web-based laboratory platform built using Django for the backend and H
 - **Test Results Access**: Users can view their laboratory test results directly through the platform by providing a code they give to them in the clinic
 - **User Authentication:**:  Users can sign up and log in  with secure authentication
 
+
+
+<video width="550" height="240" controls>
+  <source src="assets/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## Technology Stack
 
 - **Backend**: Django (Python)
@@ -75,7 +82,7 @@ This is a web-based laboratory platform built using Django for the backend and H
 
 Here is simple use case diagram for the laboratory platform:
 
-![Diagram](diagram/diagram.png)
+![Diagram](assets/diagram.png)
 
 
 
