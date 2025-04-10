@@ -13,10 +13,13 @@ This is a web-based laboratory platform built using Django for the backend and H
 
 
 
-<video width="550" height="240" controls>
-  <source src="assets/video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+**Click in this image bellow to watch the demo video**
+
+
+[<img src="assets/pic.png" alt="Watch the video" width="550" height="300">](https://www.youtube.com/watch?v=9x5-wyc-aOA)
+
+
+
 
 ## Technology Stack
 
