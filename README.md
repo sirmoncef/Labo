@@ -90,7 +90,6 @@ Here is simple use case diagram for the laboratory platform:
 
 
 
-## Contributors
-- @scottt242: Contributed to the frontend development 
+
 
 
