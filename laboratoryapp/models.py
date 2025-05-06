@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from datetime import timedelta
 
 class Exam(models.Model):
     exam = models.CharField(max_length=200)
@@ -61,6 +62,19 @@ class Contact(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+
+
+class Notification(models.Model):
+    message = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"notification come)"
+
+    def is_expired(self):
+        return timezone.now() > self.created_at + timedelta(days=1)
+
 
 
     

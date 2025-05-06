@@ -134,21 +134,42 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Set minimum date to today
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('appointmentDate').min = today;
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set minimum date for today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('appointmentDate').min = today;
     
-    // Time validation (8am-5pm)
-    const timeInput = document.getElementById('appointmentTime');
-    timeInput.addEventListener('change', function() {
-        const hours = parseInt(this.value.split(':')[0]);
-        if (hours < 8 || hours >= 17) {
-            this.setCustomValidity('We are only open from 8:00 to 17:00');
-        } else {
-            this.setCustomValidity('');
-        }
+        // Limit time between 8:00 AM and 5:00 PM
+        const timeInput = document.getElementById('appointmentTime');
+        timeInput.addEventListener('input', function() {
+            const hours = parseInt(this.value.split(':')[0]);
+            if (hours < 8 || hours >= 17) {
+                this.setCustomValidity('Appointments are only available between 08:00 and 17:00.');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    
+        // WebSocket Notification
+        const notificationSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/notifications/'
+        );
+    
+        notificationSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const message = data['message'];
+    
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-info';
+            alertDiv.innerHTML = '<i class="fas fa-bell"></i> ' + message;
+            alert(message);
+    
+            document.querySelector('.appointment-container').prepend(alertDiv);
+        };
+    
+        notificationSocket.onclose = function(e) {
+            console.error('Notification socket closed unexpectedly');
+        };
     });
-});
-</script>
+    </script>
 {% endblock %}

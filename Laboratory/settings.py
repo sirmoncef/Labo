@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
+    #"daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'laboratoryapp',
+    "channels",
 
 ]
 
@@ -59,6 +61,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Laboratory.wsgi.application'
+
+ASGI_APPLICATION = 'Laboratory.asgi.application'
+
+# Channels layers settings
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 
 

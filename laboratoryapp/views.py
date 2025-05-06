@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login , logout as auth_logout
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+
 
 def home(request):
     return render(request,'home.html')
@@ -44,6 +47,17 @@ def appointment(request):
                 ticket_number = ticket.number
 
                 message = "Appointment booked successfully!"
+                Notification.objects.create(message=message)
+
+                channel_layer = get_channel_layer()
+                async_to_sync(channel_layer.group_send)(
+                  "notifications",
+                  {
+                    "type": "send_notification",
+                    "message": "Appointment booked successfully!",
+                  }
+                )
+
                 
         except Exception as e:
             message = f"Error: {str(e)}"

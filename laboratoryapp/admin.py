@@ -5,6 +5,10 @@ from .models import *
 class ExamAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(Notification)
+class NotificationAdmin(admin.ModelAdmin):
+    pass
+
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
     pass
