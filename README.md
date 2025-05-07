@@ -14,6 +14,11 @@ This is a web-based laboratory platform built using Django for the backend and H
 
 ## Video
 
+
+- 🔗 [Noor Laboratory Platform Demo](https://labo-a0qp.onrender.com/)
+
+- **PS:** Please note that due to limitations on the free Render hosting tier, there may be occasional issues with the WebSocket connection (used for real-time notifications). This is a known limitation and not a problem with the platform code itself.
+
 **Click in this image bellow to watch the demo video**
 
 
