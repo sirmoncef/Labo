@@ -29,6 +29,7 @@ This is a web-based laboratory platform built using Django for the backend and H
   - Implemented user authentication and authorization.
   - Managed the database using SQLite3/PostgreSQL.
   - Used **Gunicorn** for development to serve the Django application.
+  - Integrated a notification system with Django Channels to send real-time notifications: when users book appointments.
 
 - **Database**: PostgreSQL/SQLite3
 - **Version Control**: Git & GitHub

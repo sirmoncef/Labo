@@ -137,22 +137,28 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Set minimum date for today
         const today = new Date().toISOString().split('T')[0];
-        document.getElementById('appointmentDate').min = today;
+        const appointmentDateInput = document.getElementById('appointmentDate');
+        if (appointmentDateInput) {
+            appointmentDateInput.min = today;
+        }
     
         // Limit time between 8:00 AM and 5:00 PM
         const timeInput = document.getElementById('appointmentTime');
-        timeInput.addEventListener('input', function() {
-            const hours = parseInt(this.value.split(':')[0]);
-            if (hours < 8 || hours >= 17) {
-                this.setCustomValidity('Appointments are only available between 08:00 and 17:00.');
-            } else {
-                this.setCustomValidity('');
-            }
-        });
+        if (timeInput) {
+            timeInput.addEventListener('input', function() {
+                const hours = parseInt(this.value.split(':')[0]);
+                if (hours < 8 || hours >= 17) {
+                    this.setCustomValidity('Appointments are only available between 08:00 and 17:00.');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+        }
     
         // WebSocket Notification
+        const socketScheme = window.location.protocol === "https:" ? "wss" : "ws";
         const notificationSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/notifications/'
+            socketScheme + '://' + window.location.host + '/ws/notifications/'
         );
     
         notificationSocket.onmessage = function(e) {
@@ -163,9 +169,11 @@
             alertDiv.className = 'alert alert-info';
             alertDiv.innerHTML = '<i class="fas fa-bell"></i> ' + message;
             alert(message);
-           
     
-            document.querySelector('.appointment-container').prepend(alertDiv);
+            const container = document.querySelector('.appointment-container');
+            if (container) {
+                container.prepend(alertDiv);
+            }
         };
     
         notificationSocket.onclose = function(e) {
@@ -173,4 +181,5 @@
         };
     });
     </script>
+    
 {% endblock %}
