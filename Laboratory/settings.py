@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 import dj_database_url
 import os
@@ -39,7 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'Laboratory.urls'
@@ -76,10 +74,10 @@ CHANNEL_LAYERS = {
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default='postgresql://labo:Jy9W0autgkaQf4um3WctFWUX54mLqJEY@dpg-d0db74re5dus73acs0j0-a/labo',
+        conn_max_age=600
+    )
 }
 
 
@@ -116,7 +114,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Ensure this matches your project structure
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles" 
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
