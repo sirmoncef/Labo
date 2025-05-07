@@ -70,7 +70,7 @@ class Notification(models.Model):
 
 
     def __str__(self):
-        return f"notification come)"
+        return f"notification come"
 
     def is_expired(self):
         return timezone.now() > self.created_at + timedelta(days=1)

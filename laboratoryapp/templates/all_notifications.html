@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="notifications-page">
+  <h1>All Notifications</h1>
+  
+  {% if notifications %}
+    <div class="notification-actions">
+      <a href="{% url 'mark_all_read' %}" class="btn">Mark all as read</a>
+    </div>
+    
+    <div class="all-notifications-list">
+      {% for notification in notifications %}
+        <div class="notification-item {% if not notification.read %}unread{% endif %}">
+          <div class="notification-message">{{ notification.message }}</div>
+          <div class="notification-meta">
+            <span class="notification-time">{{ notification.created_at|date:"F j, Y, g:i a" }}</span>
+            {% if not notification.read %}
+              <span class="unread-indicator">New</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="no-notifications">
+      <p>You don't have any notifications yet.</p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+
+</style>
+{% endblock %}
