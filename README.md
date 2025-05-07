@@ -17,7 +17,7 @@ This is a web-based laboratory platform built using Django for the backend and H
 
 - 🔗 [Noor Laboratory Platform Demo](https://labo-a0qp.onrender.com/)
 
-- **PS:** Please note that due to limitations on the free Render hosting tier, there may be occasional issues with the WebSocket connection (used for real-time notifications). This is a known limitation and not a problem with the platform code itself.
+
 
 **Click in this image bellow to watch the demo video**
 
@@ -34,7 +34,7 @@ This is a web-based laboratory platform built using Django for the backend and H
   - Implemented user authentication and authorization.
   - Managed the database using SQLite3/PostgreSQL.
   - Used **Gunicorn** for development to serve the Django application.
-  - Integrated a notification system with Django Channels to send real-time notifications: when users book appointments.
+  - Integrated a notification system with Django Channels and websocket to send real-time notifications: when users book appointments.
 
 - **Database**: PostgreSQL/SQLite3
 - **Version Control**: Git & GitHub
